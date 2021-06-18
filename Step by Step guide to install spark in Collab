@@ -1,0 +1,51 @@
+ Create a new book on Colab click on https://colab.research.google.com/
+ Name as you want and save the file 
+ Following steps to install Spark version 2.4.5
+
+Step # 1
+ Enter this command -> !apt-get install openjdk-8-jdk-headless -qq > /dev/null
+ Run (Shift+Enter)
+
+Step # 2 (location to choose a different version "http://archive.apache.org/dist/spark")
+ Enter this command -> !wget -q http://archive.apache.org/dist/spark/spark-2.4.5/spark-2.4.5-bin-hadoop2.7.tgz
+ Run (Shift+Enter)
+ 
+ Step # 3 
+ Enter this command -> !tar xf spark-2.4.5-bin-hadoop2.7.tgz
+ Run (Shift+Enter)
+ 
+ Step # 4
+ Enter this command -> !pip install -q findspark
+ Run (Shift+Enter)
+ 
+  Step # 5
+ Enter this command -> 
+import os
+os.environ["JAVA_HOME"] = "/usr/lib/jvm/java-8-openjdk-amd64"
+os.environ["SPARK_HOME"] = "/content/spark-2.4.5-bin-hadoop2.7"
+Run (Shift+Enter)
+ 
+ Step # 6
+ Enter this command -> os.environ["SPARK_HOME"]
+ Run (Shift+Enter)
+ 
+ 
+  Step # 7
+ Enter this command -> 
+import findspark
+findspark.init()
+from pyspark.sql import SparkSession
+spark = SparkSession.builder.master("local[*]").getOrCreate()
+ Run (Shift+Enter)
+ 
+ Step # 8
+ Enter this command -> pip install spark-nlp==2.4.2
+ Run (Shift+Enter)
+ 
+  Step # 9
+ Enter this command -> 
+import sparknlp
+spark = sparknlp.start()
+print("Spark NLP version: ", sparknlp.version())
+print("Apache Spark version: ", spark.version)
+ Run (Shift+Enter)
